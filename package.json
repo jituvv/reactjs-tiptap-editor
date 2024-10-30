@@ -6,7 +6,6 @@
 	"module": "./lib/reactjs-tiptap-editor.js",
 	"types": "./lib/index.d.ts",
 	"description": "A modern WYSIWYG rich text editor based on tiptap and shadcn ui for React",
-	"packageManager": "pnpm@9.12.2",
 	"exports": {
 		".": {
 			"import": {
@@ -39,7 +38,12 @@
 		"prepublishOnly": "pnpm build:lib",
 		"playground": "pnpm --dir ./playground run dev",
 		"preview": "pnpm --dir ./playground run preview",
+		"lint": "eslint src --quiet",
+		"lint:fix": "eslint src --fix --quiet",
 		"type-check": "tsc",
+		"verify-commit": "verify-commit-msg",
+		"prepare": "git-scm-hooks",
+		"release": "bumpp -r",
 		"gen-changelog": "esno ./scripts/genExtensions.ts && esno ./scripts/changelog.ts",
 		"modify-css": "esno ./scripts/modifyCss.ts"
 	},
@@ -153,10 +157,15 @@
 		"tailwindcss": "^3.4.14",
 		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.6.3",
+		"verify-commit-msg": "^0.0.14",
 		"vite": "^5.4.10",
 		"vite-plugin-dts": "^4.3.0"
 	},
 	"browserslist": [">0.3%", "not ie 11", "not dead", "not op_mini all"],
+	"git-hooks": {
+		"pre-commit": "npm run lint:fix",
+		"commit-msg": "npm run verify-commit"
+	},
 	"peerDependencies": {
 		"react": ">= 17.0.0",
 		"react-dom": ">= 17.0.0"

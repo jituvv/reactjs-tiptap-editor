@@ -1,0 +1,38 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+	"files": {
+		"ignore": ["build/**", "node_modules/**"]
+	},
+	"organizeImports": {
+		"enabled": false
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": {
+				"useKeyWithClickEvents": "off"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "off"
+			},
+			"suspicious": {
+				"noExplicitAny": "off"
+			},
+			"style": {
+				"useTemplate": "off"
+			}
+		}
+	},
+	"vcs": {
+		"useIgnoreFile": true
+	},
+	"formatter": {
+		"ignore": ["build/**", "node_modules/**"]
+	},
+	"overrides": [
+		{
+			"ignore": ["build/**", "node_modules/**"]
+		}
+	]
+}
