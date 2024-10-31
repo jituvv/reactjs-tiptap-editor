@@ -165,9 +165,9 @@ function RichTextEditor(
 	}
 
 	return (
-		<div className="reactjs-tiptap-editor flex bg-transparent">
+		<div className="reactjs-tiptap-editor richtext-flex !richtext-bg-transparent">
 			<TooltipProvider delayDuration={0} disableHoverableContent>
-				<div className="rounded-lg richtext-bg-background shadow-lg richtext-overflow-hidden">
+				<div className="rounded-lg richtext-bg-background richtext-shadow-lg richtext-overflow-hidden">
 					<div className="richtext-flex richtext-flex-col richtext-w-full richtext-max-h-full">
 						{!props?.hideToolbar && (
 							<Toolbar editor={editor} disabled={!!props?.disabled} />
