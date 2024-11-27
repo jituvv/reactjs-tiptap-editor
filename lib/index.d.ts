@@ -2,11 +2,7 @@ import { AnyExtension } from '@tiptap/core';
 import { BlockquoteOptions as BlockquoteOptions_2 } from '@tiptap/extension-blockquote';
 import { BoldOptions as BoldOptions_2 } from '@tiptap/extension-bold';
 import { BulletListOptions as BulletListOptions_2 } from '@tiptap/extension-bullet-list';
-import { BundledLanguage } from 'shiki';
-import { BundledTheme } from 'shiki';
 import { CharacterCountOptions } from '@tiptap/extension-character-count';
-import { CodeBlockOptions as CodeBlockOptions_2 } from '@tiptap/extension-code-block';
-import { CodeOptions as CodeOptions_2 } from '@tiptap/extension-code';
 import { ColorOptions as ColorOptions_2 } from '@tiptap/extension-color';
 import { DropcursorOptions } from '@tiptap/extension-dropcursor';
 import { Editor } from '@tiptap/react';
@@ -20,7 +16,6 @@ import { HeadingOptions as HeadingOptions_2 } from '@tiptap/extension-heading';
 import { HighlightOptions as HighlightOptions_2 } from '@tiptap/extension-highlight';
 import { HistoryOptions as HistoryOptions_2 } from '@tiptap/extension-history';
 import { HorizontalRuleOptions as HorizontalRuleOptions_2 } from '@tiptap/extension-horizontal-rule';
-import { ImageOptions } from '@tiptap/extension-image';
 import { ItalicOptions as ItalicOptions_2 } from '@tiptap/extension-italic';
 import { LinkOptions as LinkOptions_2 } from '@tiptap/extension-link';
 import { ListItemOptions } from '@tiptap/extension-list-item';
@@ -46,13 +41,6 @@ import { UnderlineOptions as UnderlineOptions_2 } from '@tiptap/extension-underl
 import { UseEditorOptions } from '@tiptap/react';
 
 declare type Alignments = 'left' | 'center' | 'right' | 'justify';
-
-export declare const Attachment: Node_2<AttachmentOptions, any>;
-
-declare interface AttachmentOptions extends GeneralOptions<AttachmentOptions> {
-    /** Function for uploading files */
-    upload?: (file: File) => Promise<string>;
-}
 
 export declare const BaseKit: Extension<BaseKitOptions, any>;
 
@@ -336,18 +324,6 @@ export declare const Clear: Node_2<ClearOptions, any>;
 export declare interface ClearOptions extends GeneralOptions<ClearOptions> {
 }
 
-export declare const Code: Mark<CodeOptions, any>;
-
-export declare const CodeBlock: Node_2<CodeBlockOptions, any>;
-
-export declare interface CodeBlockOptions extends GeneralOptions<CodeBlockOptions_2> {
-    languages?: BundledLanguage[];
-    defaultTheme: BundledTheme;
-}
-
-export declare interface CodeOptions extends CodeOptions_2, GeneralOptions<CodeOptions> {
-}
-
 export declare const Color: Extension<ColorOptions, any>;
 
 export declare interface ColorOptions extends ColorOptions_2, GeneralOptions<ColorOptions> {
@@ -538,8 +514,6 @@ export declare const en: {
     "editor.mermaid.tooltip": string;
 };
 
-export declare const Excalidraw: Node_2<any, any>;
-
 export declare const ExportPdf: Extension<any, any>;
 
 export declare const ExportWord: Extension<ExportWordOptions, any>;
@@ -617,30 +591,6 @@ export declare const HorizontalRule: Node_2<HorizontalRuleOptions, any>;
 export declare interface HorizontalRuleOptions extends HorizontalRuleOptions_2, GeneralOptions<HorizontalRuleOptions> {
 }
 
-export declare const Iframe: Node_2<any, any>;
-
-declare interface IImageOptions extends GeneralOptions<IImageOptions> {
-    /** Function for uploading files */
-    upload?: (file: File) => Promise<string>;
-    HTMLAttributes?: any;
-}
-
-declare interface IKatexOptions {
-    HTMLAttributes: Record<string, any>;
-}
-
-declare const Image_2: Node_2<IImageOptions, any>;
-export { Image_2 as Image }
-
-export declare const ImageGif: Node_2<ImageGifOptions, any>;
-
-declare interface ImageGifOptions extends ImageOptions {
-    /**
-     * The key for the gif https://giphy.com/
-     */
-    GIPHY_API_KEY: string;
-}
-
 export declare const ImportWord: Extension<ImportWordOptions, any>;
 
 declare interface ImportWordOptions extends GeneralOptions<ImportWordOptions> {
@@ -664,8 +614,6 @@ export declare const Italic: Mark<ItalicOptions, any>;
 
 export declare interface ItalicOptions extends ItalicOptions_2, GeneralOptions<ItalicOptions> {
 }
-
-export declare const Katex: Node_2<IKatexOptions, any>;
 
 declare type LanguageType = 'en' | 'vi' | 'zh_CN' | 'pt_BR' | (string & {});
 
@@ -702,13 +650,6 @@ declare class Locale {
 export declare const locale: Locale;
 
 export declare const Mention: Node_2<MentionOptions<any, MentionNodeAttrs>, any>;
-
-export declare const Mermaid: Node_2<MermaidOptions, any>;
-
-declare interface MermaidOptions extends GeneralOptions<MermaidOptions> {
-    /** Function for uploading files */
-    upload?: (file: File) => Promise<string>;
-}
 
 declare type MessageKeysType = keyof typeof en;
 
@@ -979,19 +920,6 @@ declare interface SearchStorage {
     currentIndex: number;
 }
 
-export declare interface SetImageAttrsOptions {
-    src?: string;
-    /** The alternative text for the image. */
-    alt?: string;
-    /** The caption of the image. */
-    caption?: string;
-    /** The width of the image. */
-    width?: number | string | null;
-    /** The alignment of the image. */
-    align?: 'left' | 'center' | 'right';
-    inline?: boolean;
-}
-
 export declare const SlashCommand: Extension<any, any>;
 
 export declare const Strike: Mark<StrikeOptions, any>;
@@ -1255,38 +1183,6 @@ export declare const vi: {
     'editor.mermaid.tooltip': string;
 };
 
-export declare const Video: Node_2<VideoOptions, any>;
-
-/**
- * Represents the interface for video options, extending GeneralOptions.
- */
-export declare interface VideoOptions extends GeneralOptions<VideoOptions> {
-    /**
-     * Indicates whether fullscreen play is allowed
-     *
-     * @default true
-     */
-    allowFullscreen: boolean;
-    /**
-     * Indicates whether to display the frameborder
-     *
-     * @default false
-     */
-    frameborder: boolean;
-    /**
-     * Width of the video, can be a number or string
-     *
-     * @default VIDEO_SIZE['size-medium']
-     */
-    width: number | string;
-    /** HTML attributes object for passing additional attributes */
-    HTMLAttributes: {
-        [key: string]: any;
-    };
-    /** Function for uploading files */
-    upload?: (file: File) => Promise<string>;
-}
-
 export declare const zh_CN: {
     'editor.remove': string;
     'editor.copy': string;
@@ -1458,22 +1354,6 @@ export { }
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
-        video: {
-            /**
-             * Add an video
-             */
-            setVideo: (options: Partial<SetVideoOptions>) => ReturnType;
-            /**
-             * Update an video
-             */
-            updateVideo: (options: Partial<SetVideoOptions>) => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
         fontSize: {
             /**
              * Set the text font size. ex: "12px", "2em", or "small". Must be a valid
@@ -1485,6 +1365,47 @@ declare module '@tiptap/core' {
              * Unset the font size
              */
             unsetFontSize: () => ReturnType;
+        };
+    }
+}
+
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        painter: {
+            setPainter: (marks: Mark[]) => ReturnType;
+        };
+    }
+}
+
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        lineHeight: {
+            setLineHeight: (lineHeight: string) => ReturnType;
+            unsetLineHeight: () => ReturnType;
+        };
+    }
+}
+
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        emoji: {
+            setEmoji: (emoji: {
+                name: string;
+                emoji: string;
+            }) => ReturnType;
+        };
+    }
+}
+
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        tableCellBackground: {
+            setTableCellBackground: (color: string) => ReturnType;
+            unsetTableCellBackground: () => ReturnType;
         };
     }
 }
@@ -1508,36 +1429,6 @@ declare module '@tiptap/core' {
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
-        imageResize: {
-            /**
-             * Add an image
-             */
-            setImageInline: (options: Partial<SetImageAttrsOptions>) => ReturnType;
-            /**
-             * Update an image
-             */
-            updateImage: (options: Partial<SetImageAttrsOptions>) => ReturnType;
-            /**
-             * Set image alignment
-             */
-            setAlignImage: (align: 'left' | 'center' | 'right') => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        lineHeight: {
-            setLineHeight: (lineHeight: string) => ReturnType;
-            unsetLineHeight: () => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
         columns: {
             insertColumns: (attrs?: {
                 cols: number;
@@ -1545,42 +1436,6 @@ declare module '@tiptap/core' {
             addColBefore: () => ReturnType;
             addColAfter: () => ReturnType;
             deleteCol: () => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        painter: {
-            setPainter: (marks: Mark[]) => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        iframe: {
-            /**
-             * Add an iframe
-             */
-            setIframe: (options: {
-                src: string;
-                service: string;
-            }) => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        emoji: {
-            setEmoji: (emoji: {
-                name: string;
-                emoji: string;
-            }) => ReturnType;
         };
     }
 }
@@ -1603,9 +1458,9 @@ declare module '@tiptap/core' {
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
-        tableCellBackground: {
-            setTableCellBackground: (color: string) => ReturnType;
-            unsetTableCellBackground: () => ReturnType;
+        tableOfContents: {
+            setTableOfContents: () => ReturnType;
+            removeTableOfContents: () => ReturnType;
         };
     }
 }
@@ -1620,70 +1475,8 @@ declare module "@tiptap/core" {
 }
 
 
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        excalidraw: {
-            setExcalidraw: (attrs?: IExcalidrawAttrs) => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        katex: {
-            setKatex: (arg?: IKatexAttrs) => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        mermaid: {
-            setMermaid: (options: any, replace?: any) => ReturnType;
-            setAlignImageMermaid: (align: 'left' | 'center' | 'right') => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        tableOfContents: {
-            setTableOfContents: () => ReturnType;
-            removeTableOfContents: () => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        attachment: {
-            setAttachment: (attrs?: unknown) => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        imageResize: {
-            /**
-             * Add an image gif
-             */
-            setImageGif: (options: Partial<SetImageAttrsOptions>) => ReturnType;
-            /**
-             * Update an image gif
-             */
-            updateImageGif: (options: Partial<SetImageAttrsOptions>) => ReturnType;
-            /**
-             * Set image alignment
-             */
-            setAlignImageGif: (align: 'left' | 'center' | 'right') => ReturnType;
-        };
-    }
+declare namespace DropdownMenuShortcut {
+    var displayName: string;
 }
 
 
@@ -1697,6 +1490,10 @@ declare namespace DialogFooter {
 }
 
 
-declare namespace DropdownMenuShortcut {
-    var displayName: string;
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        attachment: {
+            setAttachment: (attrs?: unknown) => ReturnType;
+        };
+    }
 }
