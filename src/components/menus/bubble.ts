@@ -1,62 +1,62 @@
-import type { Editor } from "@tiptap/react";
+import type { Editor } from '@tiptap/react'
 
-import { BUBBLE_TEXT_LIST } from "@/constants";
+import { BUBBLE_TEXT_LIST } from '@/constants'
 import type {
-	ButtonViewParams,
-	ButtonViewReturn,
-	ExtensionNameKeys,
-} from "@/types";
+  ButtonViewParams,
+  ButtonViewReturn,
+  ExtensionNameKeys,
+} from '@/types'
 
 /** Represents the size types for bubble images or videos */
-type BubbleImageOrVideoSizeType = "size-small" | "size-medium" | "size-large";
-type ImageAlignments = "left" | "center" | "right";
+type BubbleImageOrVideoSizeType = 'size-small' | 'size-medium' | 'size-large'
+type ImageAlignments = 'left' | 'center' | 'right'
 
 /** Represents the various types for bubble images */
 type BubbleImageType =
-	| `image-${BubbleImageOrVideoSizeType}`
-	| `video-${BubbleImageOrVideoSizeType}`
-	| "image"
-	| "image-aspect-ratio"
-	| "remove";
+  | `image-${BubbleImageOrVideoSizeType}`
+  | `video-${BubbleImageOrVideoSizeType}`
+  | 'image'
+  | 'image-aspect-ratio'
+  | 'remove'
 
 /** Represents the types for bubble videos */
-type BubbleVideoType = "video" | "remove";
+type BubbleVideoType = 'video' | 'remove'
 
 /** Represents the overall types for bubbles */
 type BubbleAllType =
-	| BubbleImageType
-	| BubbleVideoType
-	| ExtensionNameKeys
-	| "divider"
-	| (string & {});
+  | BubbleImageType
+  | BubbleVideoType
+  | ExtensionNameKeys
+  | 'divider'
+  | (string & {})
 
 /** Represents the key types for node types */
-export type NodeTypeKey = "image" | "text" | "video";
+export type NodeTypeKey = 'image' | 'text' | 'video'
 
 /** Represents the menu of bubble types for each node type */
-export type BubbleTypeMenu = Partial<Record<NodeTypeKey, BubbleMenuItem[]>>;
+export type BubbleTypeMenu = Partial<Record<NodeTypeKey, BubbleMenuItem[]>>
 
 /** Represents the menu of overall bubble types for each node type */
-export type NodeTypeMenu = Partial<Record<NodeTypeKey, BubbleAllType[]>>;
+export type NodeTypeMenu = Partial<Record<NodeTypeKey, BubbleAllType[]>>
 
 /**
  * Represents the structure of a bubble menu item.
  */
 export interface BubbleMenuItem extends ButtonViewReturn {
-	/** The type of the bubble item */
-	type: BubbleAllType;
+  /** The type of the bubble item */
+  type: BubbleAllType
 }
 
 /**
  * Represents a function to generate a bubble menu
  */
 interface BubbleView<T = any> {
-	/**
+  /**
 	 * Generates a bubble menu based on the provided options.
 	 * @param {ButtonViewParams<T>} options - The options for generating the bubble menu.
 	 * @returns {BubbleTypeMenu} The generated bubble menu.
 	 */
-	(options: ButtonViewParams<T>): BubbleTypeMenu;
+  (options: ButtonViewParams<T>): BubbleTypeMenu
 }
 
 /**
@@ -65,12 +65,12 @@ interface BubbleView<T = any> {
  * @template T
  */
 export interface BubbleOptions<T> {
-	/** The menu of bubble types for each node type. */
-	list: NodeTypeMenu;
-	/** The default list of bubble types. */
-	defaultBubbleList: any;
-	/** The function to generate a bubble menu. */
-	button: BubbleView<T>;
+  /** The menu of bubble types for each node type. */
+  list: NodeTypeMenu
+  /** The default list of bubble types. */
+  defaultBubbleList: any
+  /** The function to generate a bubble menu. */
+  button: BubbleView<T>
 }
 
 // function imageSizeMenus(editor: Editor): BubbleMenuItem[] {
@@ -288,28 +288,28 @@ export interface BubbleOptions<T> {
  * Bubble menu text list
  */
 export function getBubbleText(editor: Editor, t: any) {
-	return BUBBLE_TEXT_LIST.reduce((acc, type) => {
-		if (type === "divider" && acc.length > 0) {
-			return [
-				...acc,
-				{
-					type: "divider",
-					component: undefined,
-					componentProps: {},
-				},
-			];
-		}
+  return BUBBLE_TEXT_LIST.reduce((acc, type) => {
+    if (type === 'divider' && acc.length > 0) {
+      return [
+        ...acc,
+        {
+          type: 'divider',
+          component: undefined,
+          componentProps: {},
+        },
+      ]
+    }
 
-		const ext = editor.extensionManager.extensions.find(
-			(ext) => ext.name === type,
-		);
-		if (ext) {
-			return [
-				...acc,
-				ext.configure().options.button({ editor, t, extension: ext }),
-			];
-		}
+    const ext = editor.extensionManager.extensions.find(
+      ext => ext.name === type,
+    )
+    if (ext) {
+      return [
+        ...acc,
+        ext.configure().options.button({ editor, t, extension: ext }),
+      ]
+    }
 
-		return acc;
-	}, [] as BubbleMenuItem[]);
+    return acc
+  }, [] as BubbleMenuItem[])
 }

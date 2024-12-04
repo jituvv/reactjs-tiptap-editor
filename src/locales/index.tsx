@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 
 import { proxy, useSnapshot } from 'valtio'
 
@@ -6,8 +6,8 @@ import en from './en'
 import pt_BR from './pt-br'
 import vi from './vi'
 import zh_CN from './zh-cn'
-import mitt from '@/utils/mitt'
 import type { EventType } from '@/utils/mitt'
+import mitt from '@/utils/mitt'
 import { DEFAULT_LANG_VALUE } from '@/constants'
 
 // Define supported language types
@@ -132,15 +132,15 @@ function useLocale() {
     return locale.buildLocalesHandler(atomLangSnap.lang)
   }, [atomLangSnap.lang])
 
-  useEffect(() => {
-    const watchLang = locale.registerWatchLang((val) => {
-      atomLang.lang = val
-    })
+  // useEffect(() => {
+  //   const watchLang = locale.registerWatchLang((val) => {
+  //     atomLang.lang = val
+  //   })
 
-    return () => {
-      watchLang.unsubscribe()
-    }
-  }, [])
+  //   return () => {
+  //     watchLang.unsubscribe()
+  //   }
+  // }, [])
 
   return {
     lang: atomLangSnap.lang,
