@@ -615,7 +615,7 @@ export declare const Italic: Mark<ItalicOptions, any>;
 export declare interface ItalicOptions extends ItalicOptions_2, GeneralOptions<ItalicOptions> {
 }
 
-declare type LanguageType = 'en' | 'vi' | 'zh_CN' | 'pt_BR' | (string & {});
+declare type LanguageType = "en" | "vi" | "zh_CN" | "pt_BR" | (string & {});
 
 export declare const LineHeight: Extension<LineHeightOptions, any>;
 
@@ -1372,6 +1372,46 @@ declare module '@tiptap/core' {
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
+        search: {
+            setSearchTerm: (searchTerm: string) => ReturnType;
+            setReplaceTerm: (replaceTerm: string) => ReturnType;
+            replace: () => ReturnType;
+            replaceAll: () => ReturnType;
+            goToPrevSearchResult: () => void;
+            goToNextSearchResult: () => void;
+            setCaseSensitive: (caseSensitive: boolean) => ReturnType;
+        };
+    }
+}
+
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        indent: {
+            /**
+             * Set the indent attribute
+             */
+            indent: () => ReturnType;
+            /**
+             * Set the outdent attribute
+             */
+            outdent: () => ReturnType;
+        };
+    }
+}
+
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        painter: {
+            setPainter: (marks: Mark[]) => ReturnType;
+        };
+    }
+}
+
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
         lineHeight: {
             setLineHeight: (lineHeight: string) => ReturnType;
             unsetLineHeight: () => ReturnType;
@@ -1406,46 +1446,11 @@ declare module '@tiptap/core' {
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
-        indent: {
-            /**
-             * Set the indent attribute
-             */
-            indent: () => ReturnType;
-            /**
-             * Set the outdent attribute
-             */
-            outdent: () => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        painter: {
-            setPainter: (marks: Mark[]) => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
         emoji: {
             setEmoji: (emoji: {
                 name: string;
                 emoji: string;
             }) => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        tableOfContents: {
-            setTableOfContents: () => ReturnType;
-            removeTableOfContents: () => ReturnType;
         };
     }
 }
@@ -1462,14 +1467,9 @@ declare module '@tiptap/core' {
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
-        search: {
-            setSearchTerm: (searchTerm: string) => ReturnType;
-            setReplaceTerm: (replaceTerm: string) => ReturnType;
-            replace: () => ReturnType;
-            replaceAll: () => ReturnType;
-            goToPrevSearchResult: () => void;
-            goToNextSearchResult: () => void;
-            setCaseSensitive: (caseSensitive: boolean) => ReturnType;
+        tableOfContents: {
+            setTableOfContents: () => ReturnType;
+            removeTableOfContents: () => ReturnType;
         };
     }
 }
