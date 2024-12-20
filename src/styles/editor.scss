@@ -313,7 +313,7 @@
 @layer utilities {
   .richtext-animate-in-rt {
     animation-name: enter-rt;
-    animation-duration: 1500ms;
+    animation-duration: 150ms;
     --richtext-enter-opacity: initial;
     --richtext-enter-scale: initial;
     --richtext-enter-translate-x: initial;
@@ -322,10 +322,28 @@
 
   .richtext-animate-out-rt {
     animation-name: exit-rt;
-    animation-duration: 1500ms;
-    --richtext-enter-opacity: initial;
-    --richtext-enter-scale: initial;
-    --richtext-enter-translate-x: initial;
-    --richtext-enter-translate-y: initial;
+    animation-duration: 150ms;
+    --richtext-exit-opacity: initial;
+    --richtext-exit-scale: initial;
+    --richtext-exit-translate-x: initial;
+    --richtext-exit-translate-y: initial;
   }
 }
+
+
+
+
+
+// @keyframes enter-rt {
+//   0% {
+//     opacity: var(--richtext-enter-opacity, 1);
+//     transform: translate3d(var(--richtext-enter-translate-x, 0), var(--richtext-enter-translate-y, 0), 0) scale3d(var(--richtext-enter-scale, 1), var(--richtext-enter-scale, 1), var(--richtext-enter-scale, 1)) rotate(var(--richtext-enter-rotate, 0))
+//   }
+// }
+
+// @keyframes exit-rt {
+//   to {
+//     opacity: var(--richtext-exit-opacity, 1);
+//     transform: translate3d(var(--richtext-exit-translate-x, 0), var(--richtext-exit-translate-y, 0), 0) scale3d(var(--richtext-exit-scale, 1), var(--richtext-exit-scale, 1), var(--richtext-exit-scale, 1)) rotate(var(--richtext-exit-rotate, 0))
+//   }
+// }
