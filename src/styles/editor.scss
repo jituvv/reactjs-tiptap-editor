@@ -33,6 +33,7 @@
         .column-resize-handle {
           @apply richtext-bottom-[-2px] richtext-absolute richtext-right-[-2px] richtext-top-0 richtext-w-1 richtext-z-10 richtext-pointer-events-none richtext-bg-primary;
         }
+
         .resize-cursor {
           cursor: 'col-resize';
         }
@@ -60,6 +61,7 @@
         @apply dark:richtext-bg-white/10;
       }
     }
+
     :not(.dragging) .ProseMirror-selectednode:not(.image-view) {
       @apply richtext-outline-none richtext-bg-black/10 dark:richtext-bg-white/20 richtext-shadow-none richtext-transition-colors;
     }
@@ -90,6 +92,7 @@
       width: 100%;
       height: 0;
     }
+
     p.is-editor-empty:first-child::before {
       float: left;
       height: 0;
@@ -98,6 +101,7 @@
       width: 100%;
       content: attr(data-placeholder);
     }
+
     .ProseMirror-gapcursor {
       @apply richtext-relative richtext-w-full richtext-max-w-2xl richtext-mx-auto;
 
@@ -138,6 +142,7 @@
 
         &:hover {
           outline-color: #ffc83d;
+
           .image-view__body__button-wrap {
             display: block;
           }
@@ -226,6 +231,7 @@
       }
     }
   }
+
   /*  */
   &.dense {
     .ProseMirror {
@@ -258,31 +264,37 @@
   font-weight: 700;
   font-size: 16px;
 }
+
 .heading-1 {
   font-weight: 700;
   font-size: 28px;
   line-height: 1.6;
 }
+
 .heading-2 {
   font-weight: 700;
   font-size: 24px;
   line-height: 1.6;
 }
+
 .heading-3 {
   font-size: 20px;
   font-weight: 700;
   line-height: 1.6;
 }
+
 .heading-4 {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.6;
 }
+
 .heading-5 {
   font-size: 14px;
   font-weight: 700;
   line-height: 1.6;
 }
+
 .heading-6 {
   font-size: 14px;
   font-weight: 700;
@@ -294,7 +306,26 @@
   transition: all 100ms ease-in-out;
 }
 
-.tableCellActive > div {
+.tableCellActive>div {
   border: unset !important;
 }
 
+@layer utilities {
+  .richtext-animate-in-rt {
+    animation-name: enter-rt;
+    animation-duration: 1500ms;
+    --richtext-enter-opacity: initial;
+    --richtext-enter-scale: initial;
+    --richtext-enter-translate-x: initial;
+    --richtext-enter-translate-y: initial;
+  }
+
+  .richtext-animate-out-rt {
+    animation-name: exit-rt;
+    animation-duration: 1500ms;
+    --richtext-enter-opacity: initial;
+    --richtext-enter-scale: initial;
+    --richtext-enter-translate-x: initial;
+    --richtext-enter-translate-y: initial;
+  }
+}

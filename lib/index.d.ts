@@ -1387,6 +1387,18 @@ declare module '@tiptap/core' {
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
+        emoji: {
+            setEmoji: (emoji: {
+                name: string;
+                emoji: string;
+            }) => ReturnType;
+        };
+    }
+}
+
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
         indent: {
             /**
              * Set the indent attribute
@@ -1405,16 +1417,6 @@ declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         painter: {
             setPainter: (marks: Mark[]) => ReturnType;
-        };
-    }
-}
-
-
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        lineHeight: {
-            setLineHeight: (lineHeight: string) => ReturnType;
-            unsetLineHeight: () => ReturnType;
         };
     }
 }
@@ -1446,11 +1448,9 @@ declare module '@tiptap/core' {
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
-        emoji: {
-            setEmoji: (emoji: {
-                name: string;
-                emoji: string;
-            }) => ReturnType;
+        lineHeight: {
+            setLineHeight: (lineHeight: string) => ReturnType;
+            unsetLineHeight: () => ReturnType;
         };
     }
 }
